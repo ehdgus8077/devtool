@@ -1,0 +1,50 @@
+{
+  "name": "devtool",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@types/ejs": "^3.0.1",
+    "@types/express": "^4.17.2",
+    "@types/express-http-proxy": "^1.5.12",
+    "@types/express-session": "^1.15.16",
+    "@types/multer": "^1.4.2",
+    "@types/node": "^13.7.4",
+    "async-mutex": "^0.1.4",
+    "aws-sdk": "^2.643.0",
+    "body-parser": "^1.19.0",
+    "commander": "^4.1.1",
+    "dotenv": "^8.0.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.0",
+    "http-proxy": "^1.18.0",
+    "http-proxy-middleware": "^1.0.3",
+    "multer": "^1.4.2",
+    "winston": "^3.2.1"
+  },
+  "scripts": {
+    "test": "NODE_ENV=sample jest",
+    "build": "tsc",
+    "watch-ts": "tsc -w",
+    "watch-nodemon": "nodemon dist/index.js",
+    "watch-node": "node dist/index.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"yello.bold, cyan.bold\" \"yarn run watch-ts\" \"yarn run watch-nodemon\"",
+    "start": "tsc && node dist/index.js serve",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/*.ts src/**/*.ts src/**/**/*.ts src/**/**/**/*.ts"
+  }
+}
