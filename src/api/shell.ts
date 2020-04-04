@@ -8,6 +8,8 @@ const exec = util.promisify(require('child_process').exec);
 
 const upload = multer({ dest: constants.KEY_PATH }).single('file');
 const router = express.Router();
+const shell = Shell.getInstance(router);
+shell.init();
 
 router.get('/', async (_, res) => {
   res.render('shell.html');
@@ -27,7 +29,6 @@ router.post('/push', async (req, res) => {
       await exec(`chmod 400 ${filePath}`);
       command = command.replace('*', filePath);
     }
-    const shell = await Shell.getInstance(router);
     const result = await shell.push(path, command, filePath);
     res.send(result);
   });
@@ -35,7 +36,6 @@ router.post('/push', async (req, res) => {
 
 router.get('/pop', async (req, res) => {
   const path = req.query.path;
-  const shell = await Shell.getInstance(router);
   const result = await shell.pop(path);
   res.send(result);
 });

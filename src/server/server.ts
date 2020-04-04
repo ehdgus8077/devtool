@@ -28,6 +28,6 @@ export default class Server {
     this.app.engine('html', ejs.renderFile);
 
     this.app.use('/go', redirectRouter);
-    this.app.use('/shell', shellRouter);
+    this.app.use('/sh', shellRouter);
   }
 }

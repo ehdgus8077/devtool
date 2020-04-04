@@ -43,7 +43,6 @@ ADD ./src /server/src
 ADD ./html /server/html
 ADD ./@types /server/@types
 ADD ./tsconfig.json /server/tsconfig.json
-ADD ./jest.config.js /server/jest.config.js
 
 WORKDIR /server
 RUN yarn

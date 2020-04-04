@@ -31,10 +31,9 @@ export default class Shell {
     }
   }
 
-  static async getInstance(router: express.Router) {
+  static getInstance(router: express.Router) {
     if (!Shell.instance) {
       Shell.instance = new Shell(router);
-      await Shell.instance.init();
     }
     return Shell.instance;
   }
@@ -60,10 +59,10 @@ export default class Shell {
         ws: true,
         pathRewrite: {},
       };
-      option.pathRewrite[`^/shell${path}`] = '/';
-      option.pathRewrite[`^/shell${path}/token`] = '/token';
-      option.pathRewrite[`^/shell${path}/ws`] = '/ws';
-      routeUtil.addRoute(this.router, path, createProxyMiddleware(`/shell${path}`, option));
+      option.pathRewrite[`^/sh${path}`] = '/';
+      option.pathRewrite[`^/sh${path}/token`] = '/token';
+      option.pathRewrite[`^/sh${path}/ws`] = '/ws';
+      routeUtil.addRoute(this.router, path, createProxyMiddleware(`/sh${path}`, option));
       fs.writeFileSync(constants.SHELL_PATH, JSON.stringify(this.pathInfo), 'utf8');
       return this.pathInfo;
     } catch (error) {
